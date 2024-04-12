@@ -29,15 +29,15 @@ func (i Image) loadImage(path string) (image.Image, error) {
 	return img, nil
 }
 
-func newImage(format string, path string) (*Image, error) {
-	var validated_format bool = validateFormat(format)
-	if !validated_format {
+func NewImage(format string, path string) (*Image, error) {
+	var validatedFormat bool = validateFormat(format)
+	if !validatedFormat {
 		return nil, errors.UnsupportedFormat{}
 	}
 
 	var image Image = Image{format: format, path: path, data: nil}
-	image_data, err := image.loadImage(path)
-	image.data = image_data
+	imageData, err := image.loadImage(path)
+	image.data = imageData
 	if err != nil {
 		return nil, err
 	}
