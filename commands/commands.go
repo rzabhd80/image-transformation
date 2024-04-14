@@ -18,3 +18,11 @@ func (cmds *Commands) AddCommand(name string, f func(img image.Image) image.Imag
 func (cmds *Commands) Run(command string) func(img image.Image) image.Image {
 	return cmds.commands[command]
 }
+func (cmds *Commands) GetCommand(operation string) func(img image.Image) image.Image {
+	op, err := cmds.commands[operation]
+	if err {
+		return nil
+	} else {
+		return op
+	}
+}

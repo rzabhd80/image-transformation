@@ -15,3 +15,11 @@ func (e UnsupportedFormat) Error() string {
 func (e InstanceAlreadyExists) Error() string {
 	return "Instance already exists"
 }
+
+type CommandNotFound struct {
+	message string
+}
+
+func (e CommandNotFound) Error() string {
+	return "Command not found"
+}

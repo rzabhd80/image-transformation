@@ -1,6 +1,9 @@
 package image_transformation
 
 func main() int {
-	var application Application = Application{}
+	_, err := InitApplication()
+	if err != nil {
+		panic(err)
+	}
 	return 0
 }

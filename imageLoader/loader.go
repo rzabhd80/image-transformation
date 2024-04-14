@@ -11,9 +11,9 @@ type ImageLoader interface {
 }
 
 type Image struct {
-	format string
-	path   string
-	data   image.Image
+	Path   string
+	Format string
+	Data   image.Image
 }
 
 func (i Image) loadImage(path string) (image.Image, error) {
@@ -35,9 +35,9 @@ func NewImage(format string, path string) (*Image, error) {
 		return nil, errors.UnsupportedFormat{}
 	}
 
-	var image Image = Image{format: format, path: path, data: nil}
+	var image Image = Image{Format: format, Path: path, Data: nil}
 	imageData, err := image.loadImage(path)
-	image.data = imageData
+	image.Data = imageData
 	if err != nil {
 		return nil, err
 	}
