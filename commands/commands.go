@@ -19,8 +19,8 @@ func (cmds *Commands) Run(command string) func(img image.Image) image.Image {
 	return cmds.commands[command]
 }
 func (cmds *Commands) GetCommand(operation string) func(img image.Image) image.Image {
-	op, err := cmds.commands[operation]
-	if err {
+	op, found := cmds.commands[operation]
+	if !found {
 		return nil
 	} else {
 		return op

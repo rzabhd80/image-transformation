@@ -1,4 +1,4 @@
-package image_transformation
+package main
 
 import (
 	"flag"
@@ -57,7 +57,7 @@ func storeResult(image imageLoader.Image) bool {
 	}
 	parts := strings.Split(image.Path, "/")
 	var fileName string = strings.TrimSpace(parts[len(parts)-1])
-	err := encoder.EncodeAndWriteData(image, path+fileName)
+	err := encoder.EncodeAndWriteData(image, path+"/"+fileName)
 	if err != nil {
 		return false
 	}
@@ -83,4 +83,11 @@ func InitApplication() (bool, error) {
 	}
 	storeResult(*result)
 	return true, nil
+}
+
+func main() {
+	_, err := InitApplication()
+	if err != nil {
+		panic(err)
+	}
 }
