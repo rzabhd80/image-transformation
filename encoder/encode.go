@@ -9,7 +9,7 @@ import (
 )
 
 func EncodeAndWriteData(img imageLoader.Image, path string) error {
-	file, err := os.Open(path)
+	file, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE, os.ModePerm)
 	if err != nil {
 		return err
 	}
